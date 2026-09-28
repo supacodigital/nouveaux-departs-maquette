@@ -1,0 +1,149 @@
+/* ==========================================================================
+   Tokens — Nouveaux Départs
+   Couleurs relevées sur la maquette fournie par la cliente (service.jpeg).
+   Toute valeur réutilisée dans les CSS Modules doit venir d'ici.
+   ========================================================================== */
+
+:root {
+  /* ---- Palette brute ---------------------------------------------------- */
+  --cream-50: #fdfaf6;
+  --cream-100: #fbf6f0;
+  --cream-200: #f6ede3;
+  --cream-300: #ede0d0;
+
+  --blush-50: #fcf3f0;
+  --blush-100: #f9e6e0;
+  --blush-200: #f4d6cd;
+  --blush-300: #f1ccc3;
+  --blush-400: #e6b1a4;
+
+  --sage-50: #f5f6ee;
+  --sage-100: #eaeddf;
+  --sage-200: #d5d9c0;
+  --sage-300: #c6cfb2;
+  --sage-600: #6f7f5c;
+
+  --forest-700: #34492f;
+  --forest-800: #23351f;
+  --forest-900: #1b2918;
+
+  --wine-400: #b6646c;
+  --wine-500: #a4545c;
+  --wine-600: #97464d;
+  --wine-700: #7f3940;
+
+  --ink-900: #2b1d1e;
+  --ink-800: #3a2a2a;
+  --ink-600: #5e4d4a;
+  --ink-500: #7a6964;
+  --ink-400: #9c8c86;
+
+  --white: #ffffff;
+  --gold-400: #c9a86a;
+
+  /* Couleurs de réseaux de paiement (logos de la page de paiement) */
+  --brand-visa: #1a1f71;
+  --brand-mc-red: #eb001b;
+  --brand-mc-orange: #f79e1b;
+
+  /* ---- Rôles sémantiques ----------------------------------------------- */
+  --color-bg: var(--cream-100);
+  --color-bg-soft: var(--cream-200);
+  --color-surface: var(--cream-50);
+  --color-surface-raised: var(--white);
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-600);
+  --color-text-subtle: var(--ink-500);
+  --color-heading: var(--ink-900);
+  --color-accent: var(--wine-600);
+  --color-accent-hover: var(--wine-700);
+  --color-accent-soft: var(--blush-200);
+  --color-accent-alt: var(--forest-800);
+  --color-accent-alt-hover: var(--forest-900);
+  --color-on-accent: var(--cream-50);
+  --color-line: rgb(43 29 30 / 0.1);
+  --color-line-strong: rgb(43 29 30 / 0.18);
+  --color-focus: var(--wine-500);
+  --color-focus-soft: rgb(151 70 77 / 0.14);
+  --color-success: var(--forest-700);
+  --color-error: #b0413e;
+  --color-error-soft: rgb(176 65 62 / 0.14);
+
+  /* ---- Typographie ----------------------------------------------------- */
+  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Jost', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-script: 'Sacramento', 'Snell Roundhand', cursive;
+
+  --text-2xs: 0.6875rem; /* 11px — eyebrows */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --text-xl: clamp(1.3rem, 1.15rem + 0.6vw, 1.6rem);
+  --text-2xl: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+  --text-3xl: clamp(2.1rem, 1.6rem + 2vw, 3.25rem);
+  --text-4xl: clamp(2.6rem, 1.8rem + 3.4vw, 4.75rem);
+  --text-price: clamp(2rem, 1.7rem + 1.2vw, 2.6rem);
+  --text-script: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  --text-script-sm: 1.8rem;
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.2;
+  --leading-normal: 1.6;
+
+  --tracking-eyebrow: 0.28em;
+  --tracking-button: 0.16em;
+
+  /* ---- Espacements ----------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-section: clamp(4.5rem, 3rem + 6vw, 8.5rem);
+
+  --container: 1200px;
+  --container-narrow: 760px;
+  --gutter: clamp(1.25rem, 0.8rem + 2.4vw, 3rem);
+  --header-height: 76px;
+
+  /* ---- Formes ---------------------------------------------------------- */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --radius-arch: 999px 999px var(--radius-lg) var(--radius-lg);
+
+  /* Ombres chaudes (teintées ink, jamais noir pur) */
+  --shadow-xs: 0 1px 2px rgb(58 42 42 / 0.06);
+  --shadow-sm: 0 2px 8px -2px rgb(58 42 42 / 0.08), 0 1px 2px rgb(58 42 42 / 0.05);
+  --shadow-md: 0 12px 32px -12px rgb(58 42 42 / 0.18), 0 2px 6px -2px rgb(58 42 42 / 0.06);
+  --shadow-lg: 0 32px 64px -24px rgb(58 42 42 / 0.28), 0 4px 12px -4px rgb(58 42 42 / 0.08);
+  --ring-focus: 0 0 0 3px var(--cream-50), 0 0 0 5px var(--color-focus);
+
+  /* ---- Mouvement (cf. emil-design-eng) --------------------------------- */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --dur-press: 160ms;
+  --dur-fast: 180ms;
+  --dur-base: 240ms;
+  --dur-slow: 400ms;
+  --dur-reveal: 800ms;
+  --stagger: 70ms;
+
+  /* ---- Couches --------------------------------------------------------- */
+  --z-header: 50;
+  --z-menu: 60;
+  --z-banner: 70;
+}

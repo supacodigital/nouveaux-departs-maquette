@@ -1,0 +1,117 @@
+.footer {
+  padding-top: var(--space-16);
+  background: var(--color-bg-soft);
+  border-top: 1px solid var(--color-line);
+  font-size: var(--text-sm);
+}
+
+.top {
+  display: grid;
+  gap: var(--space-10);
+  padding-bottom: var(--space-12);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.tagline {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.social {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-text-muted);
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    background-color var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+.social:active {
+  transform: scale(0.94);
+}
+
+.col ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.heading {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.link {
+  color: var(--color-text-muted);
+  transition: color var(--dur-fast) ease;
+}
+
+.muted {
+  color: var(--color-text-subtle);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-8);
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-line);
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+}
+
+.legal {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.demo {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--blush-100);
+  color: var(--wine-700);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--color-text);
+  }
+
+  .social:hover {
+    background: var(--wine-600);
+    border-color: var(--wine-600);
+    color: var(--cream-50);
+  }
+}
+
+@media (min-width: 860px) {
+  .top {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  }
+}

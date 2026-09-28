@@ -1,0 +1,222 @@
+.section {
+  position: relative;
+  padding-block: var(--space-section);
+  background:
+    radial-gradient(60% 50% at 0% 0%, rgb(255 255 255 / 0.06) 0%, transparent 70%),
+    var(--forest-800);
+  color: var(--cream-100);
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.eyebrow {
+  color: var(--sage-300);
+}
+
+.title {
+  margin-top: var(--space-4);
+  font-size: var(--text-3xl);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--cream-50);
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--blush-200);
+}
+
+.lead {
+  max-width: 34rem;
+  margin-top: var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgb(251 246 240 / 0.78);
+}
+
+/* ---- Pile de livres (clin d'œil à la maquette cliente) -------------------- */
+
+.books {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(100%, 440px);
+  padding-top: var(--space-6);
+}
+
+.bookSlot:nth-child(1) { width: 86%; margin-left: 8%; }
+.bookSlot:nth-child(2) { width: 94%; margin-left: 2%; }
+.bookSlot:nth-child(3) { width: 90%; margin-left: 6%; }
+.bookSlot:nth-child(4) { width: 100%; }
+
+.book {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 58px;
+  border-radius: var(--radius-xs) var(--radius-sm) var(--radius-sm) var(--radius-xs);
+  background: linear-gradient(180deg, var(--cream-50) 0%, var(--cream-200) 55%, var(--cream-300) 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    inset 0 -2px 0 rgb(43 29 30 / 0.06),
+    0 6px 14px -6px rgb(0 0 0 / 0.45);
+  color: var(--ink-600);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+
+/* Nervures de reliure */
+.book::before,
+.book::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: rgb(43 29 30 / 0.12);
+}
+
+.book::before { left: 18px; }
+.book::after { right: 18px; }
+
+.book[data-index='1'] {
+  background: linear-gradient(180deg, var(--blush-100) 0%, var(--blush-200) 60%, var(--blush-300) 100%);
+}
+
+.book[data-index='3'] {
+  background: linear-gradient(180deg, var(--sage-100) 0%, var(--sage-200) 60%, var(--sage-300) 100%);
+}
+
+.book[data-active] {
+  transform: translateX(18px);
+}
+
+/* Stylo posé devant la pile */
+.pen {
+  position: absolute;
+  left: 18%;
+  bottom: -18px;
+  width: 58%;
+  height: 7px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--ink-900) 0 84%, var(--gold-400) 84% 100%);
+  box-shadow: 0 4px 8px -2px rgb(0 0 0 / 0.5);
+  rotate: -3deg;
+}
+
+/* ---- Étapes ---------------------------------------------------------------- */
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgb(251 246 240 / 0.14);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1);
+  padding: var(--space-6) var(--space-2);
+  border-bottom: 1px solid rgb(251 246 240 / 0.14);
+  transition: background-color var(--dur-fast) ease;
+}
+
+.days {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage-300);
+}
+
+.stepTitle {
+  font-size: var(--text-2xl);
+  color: var(--cream-50);
+}
+
+.stepText {
+  color: rgb(251 246 240 / 0.72);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceValue {
+  font-family: var(--font-display);
+  font-size: var(--text-price);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--cream-50);
+}
+
+.priceNote {
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: rgb(251 246 240 / 0.66);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .step:hover {
+    background: rgb(255 255 255 / 0.03);
+  }
+}
+
+@media (min-width: 640px) {
+  .step {
+    grid-template-columns: 9.5rem 1fr;
+    column-gap: var(--space-6);
+    align-items: baseline;
+  }
+
+  .days {
+    grid-row: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: var(--space-20);
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book[data-active] {
+    transform: none;
+  }
+}

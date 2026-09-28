@@ -1,0 +1,38 @@
+.section {
+  padding-block: var(--space-section);
+  background:
+    radial-gradient(50% 40% at 50% 0%, var(--blush-50) 0%, transparent 100%),
+    var(--color-bg);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-12);
+  max-width: 460px;
+  margin: var(--space-16) auto 0;
+}
+
+.cell {
+  height: 100%;
+}
+
+.secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-12);
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: var(--space-6);
+    max-width: none;
+    margin-top: var(--space-20);
+  }
+}

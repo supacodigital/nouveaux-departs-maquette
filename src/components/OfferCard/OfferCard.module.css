@@ -1,0 +1,214 @@
+.card {
+  /* Thème par défaut : rose (Séance individuelle) */
+  --card-bg: linear-gradient(180deg, var(--cream-50) 0%, var(--blush-50) 100%);
+  --card-border: var(--blush-200);
+  --card-title: var(--ink-900);
+  --card-icon-bg: var(--blush-200);
+  --card-icon-fg: var(--wine-700);
+  --card-pill: var(--blush-300);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  height: 100%;
+  padding: var(--space-12) var(--space-8) var(--space-8);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-slow) var(--ease-out),
+    box-shadow var(--dur-slow) var(--ease-out);
+}
+
+.card[data-theme='sage'] {
+  --card-bg: linear-gradient(180deg, var(--cream-50) 0%, var(--sage-50) 100%);
+  --card-border: var(--sage-200);
+  --card-title: var(--forest-900);
+  --card-icon-bg: var(--sage-200);
+  --card-icon-fg: var(--forest-800);
+  --card-pill: var(--sage-200);
+}
+
+.card[data-theme='blush'] {
+  --card-bg: linear-gradient(180deg, var(--blush-100) 0%, var(--blush-200) 100%);
+  --card-border: var(--blush-300);
+  --card-icon-bg: var(--blush-300);
+  --card-pill: var(--blush-100);
+}
+
+.card[data-featured] {
+  box-shadow: var(--shadow-lg);
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% -50%;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--forest-800);
+  color: var(--cream-50);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---- En-tête ------------------------------------------------------------- */
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  color: var(--card-title);
+}
+
+.subtitle {
+  max-width: 26ch;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+}
+
+/* ---- Bénéfices ----------------------------------------------------------- */
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-md);
+  line-height: 1.4;
+  color: var(--ink-800);
+}
+
+.icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-pill);
+  background: var(--card-icon-bg);
+  color: var(--card-icon-fg);
+}
+
+/* ---- Prix + CTA ---------------------------------------------------------- */
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: auto;
+}
+
+.pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 200px;
+  padding: var(--space-4) var(--space-10) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--card-pill);
+  border: 1px solid rgb(255 255 255 / 0.6);
+  box-shadow: var(--shadow-xs), inset 0 1px 0 rgb(255 255 255 / 0.5);
+  font-family: var(--font-display);
+  color: var(--ink-900);
+}
+
+.duration {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.rule {
+  width: 72%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.price {
+  font-size: var(--text-price);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.motto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.dot {
+  margin-inline: var(--space-3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: var(--space-10) var(--space-5) var(--space-6);
+  }
+
+  .motto {
+    letter-spacing: 0.16em;
+  }
+
+  .dot {
+    margin-inline: var(--space-2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card[data-featured] {
+    translate: 0 calc(var(--space-6) * -1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+}

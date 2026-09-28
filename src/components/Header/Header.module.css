@@ -1,0 +1,144 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-header);
+  isolation: isolate;
+}
+
+/* Fond séparé : on anime uniquement son opacité */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgb(251 246 240 / 0.82);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  box-shadow: 0 1px 0 var(--color-line);
+  opacity: 0;
+  transition: opacity var(--dur-base) ease;
+}
+
+.header[data-scrolled='true']::before {
+  opacity: 1;
+}
+
+.header[data-open='true']::before {
+  background: var(--cream-100);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  height: var(--header-height);
+}
+
+.nav {
+  display: none;
+}
+
+.links {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.link {
+  position: relative;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  transition: color var(--dur-fast) ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.cta {
+  display: none;
+  min-height: 44px;
+  padding-inline: var(--space-6);
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  transition: transform var(--dur-press) var(--ease-out);
+}
+
+.toggle:active {
+  transform: scale(0.94);
+}
+
+.sheet {
+  border-top: 1px solid var(--color-line);
+  background: var(--cream-100);
+  box-shadow: var(--shadow-md);
+}
+
+.sheetLinks {
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--space-4) var(--space-8);
+}
+
+.sheetLink {
+  display: block;
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+}
+
+.sheetCta {
+  padding-top: var(--space-6);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    color: var(--color-text);
+  }
+
+  .link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 960px) {
+  .nav {
+    display: block;
+  }
+
+  .toggle,
+  .sheet {
+    display: none;
+  }
+}

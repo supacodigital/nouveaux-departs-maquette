@@ -1,0 +1,189 @@
+.button {
+  --btn-bg: var(--color-accent);
+  --btn-bg-hover: var(--color-accent-hover);
+  --btn-fg: var(--color-on-accent);
+  --btn-border: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 52px;
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-button);
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    background-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+.button[data-size='lg'] {
+  min-height: 60px;
+  padding: 0 var(--space-8);
+  font-size: var(--text-sm);
+}
+
+.button[data-block] {
+  display: flex;
+  width: 100%;
+}
+
+.button[data-variant='forest'] {
+  --btn-bg: var(--color-accent-alt);
+  --btn-bg-hover: var(--color-accent-alt-hover);
+}
+
+.button[data-variant='outline'] {
+  --btn-bg: transparent;
+  --btn-bg-hover: rgb(43 29 30 / 0.04);
+  --btn-fg: var(--color-text);
+  --btn-border: var(--color-line-strong);
+  box-shadow: none;
+}
+
+.button[data-variant='ghost'] {
+  --btn-bg: transparent;
+  --btn-bg-hover: transparent;
+  --btn-fg: var(--color-text);
+  padding-inline: var(--space-4);
+  box-shadow: none;
+}
+
+.button[data-variant='light'] {
+  --btn-bg: var(--cream-50);
+  --btn-bg-hover: var(--white);
+  --btn-fg: var(--wine-700);
+}
+
+.content,
+.busy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  transition:
+    opacity var(--dur-base) ease,
+    filter var(--dur-base) ease,
+    transform var(--dur-base) var(--ease-out);
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.arrow {
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+
+/* État chargement : fondu enchaîné + léger flou pour fondre les deux états */
+.busy {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  filter: blur(2px);
+  transform: translateY(6px);
+  pointer-events: none;
+}
+
+.button[data-loading] {
+  cursor: progress;
+}
+
+.button[data-loading] .content {
+  opacity: 0;
+  filter: blur(2px);
+  transform: translateY(-6px);
+}
+
+.button[data-loading] .busy {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  opacity: 0.85;
+  animation: spin 650ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Petits écrans : les longs libellés restent sur la largeur disponible */
+@media (max-width: 480px) {
+  .button {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .button[data-size='lg'] {
+    padding-inline: var(--space-6);
+    font-size: var(--text-xs);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .busy {
+    transform: none !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--btn-bg-hover);
+    box-shadow: var(--shadow-md);
+  }
+
+  .button[data-variant='outline']:hover {
+    border-color: var(--ink-400);
+    box-shadow: none;
+  }
+
+  .button[data-variant='ghost']:hover {
+    box-shadow: none;
+    color: var(--color-accent);
+  }
+
+  .button:hover .arrow {
+    transform: translateX(3px);
+  }
+
+  .button:disabled:hover {
+    background: var(--btn-bg);
+  }
+}
